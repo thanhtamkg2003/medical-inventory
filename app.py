@@ -2275,7 +2275,10 @@ def report(round_id):
     return send_file(output,as_attachment=True,
                      download_name=report_filename(r["name"],round_id))
 
+# Khởi tạo CSDL ngay khi module được Gunicorn nạp.
+# Trên Render, Gunicorn không chạy khối __main__.
+init_db()
+
 if __name__=="__main__":
-    init_db()
     # Bản chạy thử trên máy tính. Dùng HTTPS và cấu hình bảo mật trước khi đưa lên Internet.
     app.run(host="127.0.0.1",port=5056,debug=False,use_reloader=False,threaded=False)
