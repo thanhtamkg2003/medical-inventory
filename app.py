@@ -11,6 +11,7 @@ import tempfile
 import unicodedata
 from collections import Counter
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from functools import wraps
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -236,7 +237,7 @@ def session_token_hash(token):
 
 def request_client_ip():
     # Chỉ tin X-Forwarded-For khi người quản trị chủ động bật TRUST_PROXY.
-    trust_proxy=os.environ.get("TRUST_PROXY", "0").lower() in {"1", "true", "yes"}
+    trust_proxy=os.environ.get("TRUST_PROXY", "1").lower() in {"1", "true", "yes"}
     if trust_proxy:
         forwarded=request.headers.get("X-Forwarded-For", "")
         if forwarded:
