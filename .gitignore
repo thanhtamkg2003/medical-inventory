@@ -1,0 +1,7 @@
+app_secret.key
+medical_inventory.db
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
