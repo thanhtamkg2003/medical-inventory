@@ -202,7 +202,7 @@ def db():
     return con
 
 def now():
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).strftime("%Y-%m-%d %H:%M:%S")
 
 def cell_text(value):
     if value is None:
@@ -2282,3 +2282,4 @@ init_db()
 if __name__=="__main__":
     # Bản chạy thử trên máy tính. Dùng HTTPS và cấu hình bảo mật trước khi đưa lên Internet.
     app.run(host="127.0.0.1",port=5056,debug=False,use_reloader=False,threaded=False)
+
